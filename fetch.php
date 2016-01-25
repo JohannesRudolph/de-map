@@ -8,6 +8,12 @@ $supported = array(
 	'about' => array(
 		'tpl' => 'templates/about.tpl',
 	),
+	'authors' => array(
+		'tpl' => 'templates/authors.tpl',
+	),
+	'source' => array(
+		'tpl' => 'templates/source.tpl',
+	),
 	'stats' => array(
 		'tpl' => 'templates/stats.tpl',
 		'contr' => 'fetchStats',

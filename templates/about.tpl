@@ -20,30 +20,3 @@
 	Knoten, die länger offline sind, werden nicht auf der Karte angezeigt.
 	Falls bekannt ist, dass sie weniger als 3 Tage offline sind, werden sie grau dargestellt.
 </p>
-<h3>Wer hat es gebaut</h3>
-<p>
-	Tino Dietel<br />
-	tino [at] freifunk-emskirchen.de<br/>
-	<a href="http://www.freifunk-emskirchen.de">Freifunk Emskirchen</a><br />
-	<a href="https://github.com/stilgarbf">https://github.com/stilgarbf/</a><br /><br />
-</p>
-<p>
-	<i>Heatmap Layer:</i><br />
-	Alexander Wunschik<br />
-	freifunk [at] wunschik.net<br/>
-	<a href="https://wiki.freifunk-franken.de/w/Benutzer:DelphiN">Freifunk Franken</a><br />
-	<a href="https://github.com/mojoaxel">https://github.com/mojoaxel/</a><br /><br />
-</p>
-<h3>Technik</h3>
-<ul>
-	<li>Leaflet <a href="http://leafletjs.com/" targte="_blank">http://leafletjs.com/</a></li>
-	<li>Leaflet-Markercluster <a href="https://github.com/Leaflet/Leaflet.markercluster" targte="_blank">https://github.com/Leaflet/Leaflet.markercluster</a></li>
-
-	<li>Bootstrap <a href="http://getbootstrap.com/" targte="_blank">http://getbootstrap.com/</a></li>
-	<li>simpleCachedCurl <a href="https://github.com/ginader/simpleCachedCurl" targte="_blank">https://github.com/ginader/simpleCachedCurl/</a></li>
-</ul>
-<h3>Attribution</h3>
-<p>
-	Icon zum Zentrieren der Karte made by <a href="http://www.icons8.com" title="Icons8">Icons8</a> - <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> lizensiert unter <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
-</p>
-<a class="btn btn-info" href="http://www.freifunk-emskirchen.de/de-map/" target="ffems">Ausführliche Informationen</a>

@@ -41,6 +41,8 @@ require 'config.php';
 								<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Infos</a></li>
 								<li role="presentation"><a href="#about" aria-controls="profile" role="tab" data-toggle="tab" data-tabsource="fetch.php?content=about">Über die Karte</a></li>
 								<li role="presentation"><a href="#stats" aria-controls="profile" role="tab" data-toggle="tab" data-tabsource="fetch.php?content=stats">Statistik</a></li>
+								<li role="presentation"><a href="#authors" aria-controls="profile" role="tab" data-toggle="tab" data-tabsource="fetch.php?content=authors">Autoren</a></li>
+								<li role="presentation"><a href="#source" aria-controls="profile" role="tab" data-toggle="tab" data-tabsource="fetch.php?content=source">Source Code</a></li>
 							</ul>
 
 							<!-- Tab panes -->
@@ -57,6 +59,8 @@ require 'config.php';
 								</div>
 								<div role="tabpanel" class="tab-pane" id="about"></div>
 								<div role="tabpanel" class="tab-pane" id="stats"></div>
+								<div role="tabpanel" class="tab-pane" id="authors"></div>
+								<div role="tabpanel" class="tab-pane" id="source"></div>
 							</div>
 
 						</div>
