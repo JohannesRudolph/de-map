@@ -416,62 +416,56 @@ class nodeListParser
 
 			foreach($communityData->nodeMaps AS $nmEntry)
 			{
-
-				if(
-					isset($nmEntry->technicalType)
-					&&
-					isset($nmEntry->url)
-				)
-				{
-					$url = $this->_getUrl($nmEntry->url);
-
-					if(!$url)
-					{
-						// no usable url ignore this entry
-						$this->_addCommunityMessage('url broken');
-						continue;
-					}
-
-					if(in_array($url, $parsedSources))
-					{
-						// already parsed ( meta community?)
-						$this->_addCommunityMessage('already parsed - skipping - '.$url);
-						continue;
-					}
-
-					$this->_addCommunityMessage('try to find parser for: '.$url);
-
-					if($nmEntry->technicalType == 'netmon')
-					{
-						$this->_addCommunityMessage('parse as netmon');
-						$data = $this->_getFromNetmon($cName, $url);
-					}
-					elseif($nmEntry->technicalType == 'ffmap' || $nmEntry->technicalType == 'meshviewer')
-					{
-						if(preg_match('/\.json$/', $nmEntry->url))
-						{
-							$url = $nmEntry->url;
-						}
-
-						$this->_addCommunityMessage('parse as ffmap/meshviewer');
-						$data = $this->_getFromFfmap($cName, $url);
-					}
-					elseif($nmEntry->technicalType == 'openwifimap')
-					{
-						$this->_addCommunityMessage('parse as openwifimap');
-						$data = $this->_getFromOwm($cName, $url);
-					}
-
-					if($data !== false)
-					{
-						// found something
-						$parsedSources[] = $url;
-						break;
-					}
-				}
-				else
+				if(!(isset($nmEntry->technicalType) && isset($nmEntry->url)))
 				{
 					$this->_addCommunityMessage('url or type missing');
+					continue;
+				}
+
+				$url = $this->_getUrl($nmEntry->url);
+
+				if(!$url)
+				{
+					// no usable url ignore this entry
+					$this->_addCommunityMessage('url broken');
+					continue;
+				}
+
+				if(in_array($url, $parsedSources))
+				{
+					// already parsed ( meta community?)
+					$this->_addCommunityMessage('already parsed - skipping - '.$url);
+					continue;
+				}
+
+				$this->_addCommunityMessage('try to find parser for: '.$url);
+
+				if($nmEntry->technicalType == 'netmon')
+				{
+					$this->_addCommunityMessage('parse as netmon');
+					$data = $this->_getFromNetmon($cName, $url);
+				}
+				elseif($nmEntry->technicalType == 'ffmap' || $nmEntry->technicalType == 'meshviewer')
+				{
+					if(preg_match('/\.json$/', $nmEntry->url))
+					{
+						$url = $nmEntry->url;
+					}
+
+					$this->_addCommunityMessage('parse as ffmap/meshviewer');
+					$data = $this->_getFromFfmap($cName, $url);
+				}
+				elseif($nmEntry->technicalType == 'openwifimap')
+				{
+					$this->_addCommunityMessage('parse as openwifimap');
+					$data = $this->_getFromOwm($cName, $url);
+				}
+
+				if($data !== false)
+				{
+					// found something
+					$parsedSources[] = $url;
+					break;
 				}
 			}
 
