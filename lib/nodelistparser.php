@@ -542,7 +542,13 @@ class nodeListParser
 			return false;
 		}
 
-		$schemaString = file_get_contents(__DIR__.'/../schema/nodelist-schema-1.0.0.json');
+		$schemaVersion = $responseObject->version;		
+		$this->_addCommunityMessage($comUrl.' has schema version ' . $schemaVersion);
+
+		// arguably we shouldn't load a file from disk based on raw user input...
+		// it would be more efficient to keep all schema strings in memory anway
+		$schemaString = file_get_contents(__DIR__.'/../schema/nodelist-schema-' . $schemaVersion . '.json');
+
 		$schema = json_decode($schemaString);
 		$validationResult = Jsv4::validate($responseObject, $schema);
 
@@ -574,16 +580,16 @@ class nodeListParser
 		{
 			$counter++;
 
-			if(	empty($router->position->lat)
-				||
-				(
-					empty($router->position->lon)
-					&&
-					empty($router->position->long)
-				)
-			)
+			// apparently the field could be named lon or long (even though that would not be sticking to the schema correctly)
+			$nodeLon = !empty($router->position->lon) 
+				? $router->position->lon 
+				: !empty($router->position->long) 	
+					? $router->position->long 
+					: null;
+
+			$nodeHasLocation = !empty($router->position->lat) && !empty($nodeLon);
+			if (!$nodeHasLocation)
 			{
-				// router has no location
 				$skipped++;
 				continue;
 			}
@@ -591,12 +597,16 @@ class nodeListParser
 			$thisRouter = array(
 				'id' => (string)$router->id,
 				'lat' => (string)$router->position->lat,
-				'long' => (!empty($router->position->lon) ? (string)$router->position->lon : (string)$router->position->long),
+				'long' => (string)$nodeLon,				
 				'name' => (string)$router->name,
 				'community' => $comName,
 				'status' => 'unknown',
 				'clients' => 0
 			);
+
+			$nodeHasAltitude = !empty($router->position->alt);
+			if ($nodeHasAltitude)
+				$thisRouter['alt'] = $router->position->alt;
 
 			if(isset($router->status))
 			{
