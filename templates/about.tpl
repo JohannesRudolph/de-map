@@ -14,7 +14,7 @@
 </p>
 <h4>Verarbeitung</h4>
 <p>
-	Alle 60 Minuten werden die Daten neu verarbeitet und so aktualisiert.
+	Alle 60 Minuten werden die Daten neu verarbeitet und so aktualisiert. Das Protokoll kannst du dir auf der <a href="debug.php">Debug Seite</a> ansehen.
 </p>
 <p>
 	Knoten, die länger offline sind, werden nicht auf der Karte angezeigt.
