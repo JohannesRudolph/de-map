@@ -51,6 +51,8 @@ class nodeListParser
 
 	private $_maxAge = 3;
 
+	// These guys have have lots of duplicate nodes, hence excluding them for now
+	// see https://github.com/ffansbach/de-map/issues/23 for discussion
 	private $_urlBlackList = array('http://map.freifunk-ruhrgebiet.de/nodes.json');
 
 	/**
