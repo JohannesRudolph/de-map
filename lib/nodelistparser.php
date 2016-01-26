@@ -996,7 +996,6 @@ class nodeListParser
 				'name' => (string)$router->value->hostname,
 				'community' => $comName,
 				'status' => $isOnline ? 'online' : 'offline',
-				'clients' => '?'
 			);
 
 			// add to routerlist for later use in JS
