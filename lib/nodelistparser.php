@@ -1,5 +1,10 @@
 <?php
 
+/** Set execution limits */
+@ini_set("max_execution_time", 300);
+@ini_set("memory_limit", "256M");
+    
+
 class nodeListParser
 {
 	private $_sourceUrl = '';
@@ -583,11 +588,12 @@ class nodeListParser
 			$counter++;
 
 			// apparently the field could be named lon or long (even though that would not be sticking to the schema correctly)
-			$nodeLon = !empty($router->position->lon) 
-				? $router->position->lon 
-				: !empty($router->position->long) 	
-					? $router->position->long 
-					: null;
+			$nodeLon = null;
+			
+			if (!empty($router->position->lon))
+				$nodeLon = $router->position->lon;
+			else if (!empty($router->position->long))
+				$nodeLon = $router->position->long;					
 
 			$nodeHasLocation = !empty($router->position->lat) && !empty($nodeLon);
 			if (!$nodeHasLocation)
