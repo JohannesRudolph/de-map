@@ -3,7 +3,7 @@
 /** Set execution limits */
 @ini_set("max_execution_time", 300);
 @ini_set("memory_limit", "256M");
-    
+ignore_user_abort(TRUE);   // do not abort when the request is killed
 
 class nodeListParser
 {
@@ -589,7 +589,7 @@ class nodeListParser
 
 			// apparently the field could be named lon or long (even though that would not be sticking to the schema correctly)
 			$nodeLon = null;
-			
+
 			if (!empty($router->position->lon))
 				$nodeLon = $router->position->lon;
 			else if (!empty($router->position->long))
